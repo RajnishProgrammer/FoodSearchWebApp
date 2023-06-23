@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-pkuyum2+r912cak4(s-v#381c&9y4z($9w-i0&+p@uc5&b%i%s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["foodsearchwebapp-production.up.railway.app"]
 
 
 # Application definition
