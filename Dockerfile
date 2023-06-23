@@ -1,6 +1,5 @@
+# Use the official Python base image
 FROM python:3.9
-
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
 
 # Set the working directory
 WORKDIR /app
@@ -11,8 +10,8 @@ COPY . .
 # Install Python dependencies
 RUN pip install -r requirements.txt
 
-# Expose the port for the Django development server
-EXPOSE 8000
+# Expose the port on which Gunicorn will listen
+EXPOSE 5534
 
-# Set the command to start the server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Set the command to start Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "foodsearchapp.wsgi:application"]
