@@ -23,4 +23,4 @@ COPY . .
 RUN pip install -r requirements.txt
 
 # Set the command to start the server
-CMD ["python", "manage.py runserver"]
+CMD ["python", "manage.py"]
