@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 EXPOSE 5534
 
 # Set the command to start Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "foodsearchapp.wsgi:application"]
+CMD ["gunicorn", "foodsearchapp.wsgi", "--bind", "0.0.0.0:8000"]
