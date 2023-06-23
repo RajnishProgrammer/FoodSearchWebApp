@@ -1,1 +1,1 @@
-web: gunicorn foodsearchapp.wsgi --log-file -
+web: gunicorn foodsearchapp.wsgi --bind 0.0.0.0:$PORT

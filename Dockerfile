@@ -1,10 +1,6 @@
 FROM python:3.9
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    libsm6 \
-    libxext6
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
 
 # Set the working directory
 WORKDIR /app
@@ -15,5 +11,8 @@ COPY . .
 # Install Python dependencies
 RUN pip install -r requirements.txt
 
+# Expose the port for the Django development server
+EXPOSE 8000
+
 # Set the command to start the server
-CMD gunicorn foodsearchapp.wsgi:application --bind 0.0.0.0:8080
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
