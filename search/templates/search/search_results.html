@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hunger Killer 😋</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'search/styles.css' %}">
+</head>
+
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    <form method="get" action="{% url 'search:search' %}">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        {% for item_data in cleaned_items %}
+        <li>
+            <p>Item: {{ item_data.item }}</p>
+            <p>Price: {{ item_data.price }}</p>
+            <p>Location: {{ item_data.location }}</p>
+            <p>Restaurant: {{ item_data.restaurant_name }}</p>
+        </li>
+        {% empty %}
+        <li>No results found.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+</html>

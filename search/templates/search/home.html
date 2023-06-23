@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hunger Killer 😋</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'search/styles.css' %}">
+</head>
+
+<body>
+  <h1>Kill Your, Hunger 😇 </h1>
+  <form method="get" action="{% url 'search:search' %}">
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <h2>Some Feast Forts 🏰 :</h2>
+  <ul>
+    {% for item in random_items %}
+    <li>{{ item.name }} - {{ item.location }}</li>
+    {% empty %}
+    <li>No random items found.</li>
+    {% endfor %}
+  </ul>
+</body>
+
+</html>
